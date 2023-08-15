@@ -8,6 +8,10 @@ def solution(source):
     return None
 
 
+def solution_with_comprehension(source):
+    return [y for y in source if source.count(y) == 1][0]
+
+
 if __name__ == '__main__':
-    answer = solution('aabccbdcbe')
+    answer = solution('aaa')
     print(answer)
