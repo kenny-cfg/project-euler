@@ -17,9 +17,7 @@ def solution(digits):
     all_relevant_numbers = range(10 ** (digits - 1), 10 ** digits)
     all_relevant_products = [x * y for y in all_relevant_numbers for x in all_relevant_numbers]
     all_palindromes = filter(lambda x: str(x)[::-1] == str(x), all_relevant_products)
-    for x in all_palindromes:
-        print(x)
-    pass
+    return max(all_palindromes)
 
 
 if __name__ == '__main__':
