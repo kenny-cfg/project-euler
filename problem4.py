@@ -15,7 +15,8 @@ import math
 def solution(digits):
     # Work out range from 10 to 99
     all_relevant_numbers = range(10 ** (digits - 1), 10 ** digits)
-    for x in all_relevant_numbers:
+    all_relevant_products = [x * y for y in all_relevant_numbers for x in all_relevant_numbers]
+    for x in all_relevant_products:
         print(x)
     pass
 
