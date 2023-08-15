@@ -8,6 +8,10 @@ Find the sum of all the multiples of 3 or 5 below 1000
 """
 
 
+# lambda x: x % 3 == 0 or x % 5 == 0
+def is_multiple_of_3_or_5(x):
+    return x % 3 == 0 or x % 5 == 0
+
 # This is probably 'more Pythonic'
 def solve_for(top_number):
     all_numbers = range(1, top_number)
