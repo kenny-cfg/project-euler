@@ -21,6 +21,5 @@ def solution(digits):
 
 
 if __name__ == '__main__':
-    answer = solution(2)
+    answer = solution(3)
     print(answer)
-    print('Should be 9009')
