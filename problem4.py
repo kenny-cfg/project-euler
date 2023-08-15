@@ -15,24 +15,39 @@ import math
 def solution(digits):
     lowest_relevant_number = 10 ** (digits - 1)
     highest_relevant_number = 10 ** digits
-    all_relevant_numbers = range(lowest_relevant_number , highest_relevant_number)
+    all_relevant_numbers = range(lowest_relevant_number, highest_relevant_number)
     all_relevant_products = [x * y for y in all_relevant_numbers for x in all_relevant_numbers]
     all_palindromes = filter(lambda x: str(x)[::-1] == str(x), all_relevant_products)
     return max(all_palindromes)
 
 
+def is_palindrome(number):
+    return str(number)[::-1] != str(number)
+
+
+def solution_with_single_starting_number(starting_number, digits):
+    lowest_relevant_number = 10 ** (digits - 1)
+    highest_relevant_number = 10 ** digits
+    all_relevant_numbers = range(lowest_relevant_number, highest_relevant_number)
+    candidate = 0
+    for y in all_relevant_numbers:
+        product = starting_number * y
+        if not is_palindrome(product):
+            continue
+        if product > candidate:
+            candidate = product
+    return candidate
+
+
 def solution_with_for_loops(digits):
     lowest_relevant_number = 10 ** (digits - 1)
     highest_relevant_number = 10 ** digits
-    all_relevant_numbers = range(lowest_relevant_number , highest_relevant_number)
+    all_relevant_numbers = range(lowest_relevant_number, highest_relevant_number)
     candidate = 0
     for x in all_relevant_numbers:
-        for y in all_relevant_numbers:
-            product = x * y
-            if str(product)[::-1] != str(product):
-                continue
-            if product > candidate:
-                candidate = product
+        to_consider = solution_with_single_starting_number(x, digits)
+        if to_consider > candidate:
+            candidate = to_consider
     return candidate
 
 
